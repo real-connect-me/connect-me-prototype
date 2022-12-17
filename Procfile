@@ -1,1 +1,1 @@
-"web: gunicorn homepage:homepage" 
+web: gunicorn homepage:app 

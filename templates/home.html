@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conn-ect</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+    <h1 class="d-flex justify-content-center mt-2 text-light">C</h3>
+    <p class="d-flex justify-content-center text-light">A timeraiser project</p>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-10">
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" href="/event-create" role="button">New Event</a>
+        </div>
+    </div>
+    <h1 class="d-flex justify-content-center mt-3 text-light">EVENTS</h3>
+    {% for i in range(3) %}
+        <div class="container rounded h-custom bg-light mt-3">
+            <div class="d-flex flex-column h-100 text-light">
+                {% if start + i < events.__len__() %}
+                    <div class="p-2">{{events[start + i]["name"]}}</div>
+                    <div class="p-2">At {{events[start + i]["place"]}}</div>
+                    <div class="p-2 mt-auto">{{events[start + i]["time"]}}</div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col text-left">
+                <a class="btn btn-primary" href="/left" role="button">Prev Page</a>
+            </div>
+            <div class="col-8">  
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-primary" href="/right" role="button">Next Page</a>
+            </div>
+        </div>
+    </div>
+    <!-- use jinja to loop through first 3 events in {events} list and display the data (for now use lettucemeet links, tell will integrate later) -->
+</body>
+</html>

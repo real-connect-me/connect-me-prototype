@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="../static/bootstrap.css">
 </head>
 <body>
-    {{start}}
-    {{events}}
+    {{s}}
+    {{evs}}
     <h1 class="d-flex justify-content-center mt-2 text-light">C</h3>
     <p class="d-flex justify-content-center text-light">A timeraiser project</p>
     <div class="row">
@@ -25,10 +25,10 @@
     {% for i in range(3) %}
         <div class="container rounded h-custom bg-light mt-3">
             <div class="d-flex flex-column h-100 text-light">
-                {% if start + i < events.__len__() %}
-                    <div class="p-2">{{events[start + i]["name"]}}</div>
-                    <div class="p-2">At {{events[start + i]["place"]}}</div>
-                    <div class="p-2 mt-auto">{{events[start + i]["time"]}}</div>
+                {% if s + i < evs.__len__() %}
+                    <div class="p-2">{{evs[s + i]["name"]}}</div>
+                    <div class="p-2">At {{evs[s + i]["place"]}}</div>
+                    <div class="p-2 mt-auto">{{evs[s + i]["time"]}}</div>
                 {% endif %}
             </div>
         </div>
@@ -39,13 +39,12 @@
                 <a class="btn btn-primary" href="/left" role="button">Prev Page</a>
             </div>
             <div class="col-3 ">  
-                <div class="d-flex justify-content-center align-content-center text-light">Page: {{start//3}}</div>
+                <div class="d-flex justify-content-center align-content-center text-light">Page: {{s//3}}</div>
             </div>
             <div class="col text-right">
                 <a class="btn btn-primary" href="/right" role="button">Next Page</a>
             </div>
         </div>
     </div>
-    <!-- use jinja to loop through first 3 events in {events} list and display the data (for now use lettucemeet links, tell will integrate later) -->
 </body>
 </html>

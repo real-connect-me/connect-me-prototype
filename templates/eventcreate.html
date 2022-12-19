@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="../static/bootstrap.css">
 </head>
 <body>
+    {{p}}
     <div class="row">
         <div class="col">
-            <a class="btn btn-primary mt-3 ml-3" href="/" role="button">Back</a>
+            <a class="btn btn-primary mt-3 ml-3" href="/?page={{p}}" role="button">Back</a>
         </div>
         <div class="col-6">  
             <form action="/" method="post">
@@ -25,7 +26,7 @@
     
     <div class="container mt-3">
         <!-- change form to event creation stuff -->
-        <form class="inline-block" action="/" method="post">
+        <form class="inline-block" action="/?page={{p}}" method="post">
             <div class="form-group">
             <small id="what" class="form-text text-light">Please describe what event you plan to host.</small>
             <input type="text" name="Event Name" class="form-control" id="what" aria-describedby="what" placeholder="Describe your event">

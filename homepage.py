@@ -15,5 +15,6 @@ def homepage():
 
 @app.route("/event-create")
 def eventform():
-    return render_template("eventcreate.html")
+    holdpage = request.args.get("page", default = 0, type = int)
+    return render_template("eventcreate.html", p = holdpage)
 

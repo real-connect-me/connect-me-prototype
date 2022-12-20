@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="../static/bootstrap.css">
 </head>
 <body>
-    <h1 class="d-flex justify-content-center mt-2 text-light">C</h3>
-    <p class="d-flex justify-content-center text-light">A timeraiser project</p>
-    <div class="row">
-        <div class="col">
-        </div>
-        <div class="col-10">
-        </div>
-        <div class="col">
-            <a class="btn btn-primary" href="/event-create?page={{page}}" role="button">New Event</a>
+    <h1 class="d-flex justify-content-center mt-2 text-light">C</h1>
+    <p class="d-flex justify-content-center text-light">A timeraiser project</p><br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-5">
+                <h3 class="d-flex justify-content-center mt-1 text-light">EVENTS</h3>
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-primary mt-2" href="/event-create?page={{page}}" role="button">New Event</a>
+            </div>
         </div>
     </div>
-    <h1 class="d-flex justify-content-center mt-3 text-light">EVENTS</h3>
     {% for i in range(3) %}
         <div class="container rounded h-custom bg-light mt-3 text-light">
             {% if page*3 + i < evs.__len__() %}
@@ -29,19 +31,19 @@
             {% endif %}
         </div>
     {% endfor %}
-    <div class="container mt-3">
+    <div class="container mt-1">
         <div class="row">
-            <div class="col text-left">
+            <div class="col text-left mt-2">
                 {% if page > 0 %}
                     <a class="btn btn-primary" href="/?page={{page-1}}" role="button">Prev Page</a>
                 {% else %}
                     <a class="btn btn-secondary" href="/" role="button">Prev Page</a>
                 {% endif %}
             </div>
-            <div class="col-3 ">  
+            <div class="col-3">  
                 <div class="d-flex justify-content-center align-content-center text-light">Page: {{page+1}}</div>
             </div>
-            <div class="col text-right">
+            <div class="col text-right mt-2">
                 <a class="btn btn-primary" href="/?page={{page+1}}" role="button">Next Page</a>
             </div>
         </div>

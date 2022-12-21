@@ -18,3 +18,11 @@ def eventform():
     holdpage = request.args.get("page", default = 0, type = int)
     return render_template("eventcreate.html", p = holdpage)
 
+@app.route("/search", methods=["GET", "POST"])
+def searchfor():
+    if request.method == "POST":
+        searchfor = request.form["Keywords"]
+        return "hi"
+    else:
+        return redirect("/")
+

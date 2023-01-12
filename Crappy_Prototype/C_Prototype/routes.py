@@ -1,6 +1,6 @@
 from flask import Blueprint, request, url_for, render_template, redirect
-from .extentions import db
-from .models import Event
+from extentions import db
+from models import Event
 
 main = Blueprint('main', __name__)
 

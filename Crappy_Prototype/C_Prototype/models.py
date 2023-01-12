@@ -1,4 +1,4 @@
-from .extentions import db
+from extentions import db
 from datetime import datetime
 
 class Event(db.Model):

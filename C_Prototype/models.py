@@ -9,4 +9,4 @@ class Event(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return self.id
+        return "<Name %r>" % self.id

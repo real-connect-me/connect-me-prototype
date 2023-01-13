@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Event</title>
-    <link rel="stylesheet" href="../static/bootstrap.css">
-</head>
-<body>
-    <div class="row">
-        <div class="col">
-            <a class="btn btn-primary mt-3 ml-3" href="/?page={{p}}" role="button">Back</a>
-        </div>
-        <div class="col-6">  
-            <form action="/" method="post">
-                <h1 class="d-flex justify-content-center mt-2 text-light">C</h3>
-                <p class="d-flex justify-content-center text-light">A timeraiser project</p>
-            </form>
-        </div>
-        <div class="col">
-        </div>
-    </div>
-    
-    
+{% extends "base.html" %}
+{% block title %}Create Event{% endblock %}
+{% block content %}
     <div class="container mt-3">
         <form class="inline-block" action="/?page={{p}}" method="post">
             <div class="form-group">
@@ -36,5 +14,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-</body>
-</html>
+{% endblock %}

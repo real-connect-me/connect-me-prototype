@@ -4,12 +4,12 @@
     <div class="container">
         <div class="row">
             <div class="col-3">
-                <form action="/search" method="post">
-                    {{sform.keywords.label}} <br>
-                    {{sform.keywords}}
-                    <div class="input-group-append">
-                        {{sform.submit.label}} <br>
-                        {{sform.submit}}
+                <form action="/result" method="post">
+                    {{ sform.hidden_tag() }}
+                    <div class="input-group">
+                        {{sform.keywords.label}}
+                        {{sform.keywords}}
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

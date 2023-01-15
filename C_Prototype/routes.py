@@ -2,6 +2,7 @@ from flask import Blueprint, request, url_for, render_template, redirect
 from extentions import db
 from models import Event
 from forms import SearchForm
+from sqlalchemy.sql import text
 
 main = Blueprint('main', __name__)
 
@@ -9,7 +10,8 @@ main = Blueprint('main', __name__)
 def viewevents():
     page = request.args.get("page", default=0, type=int)
     sform = SearchForm()
-    #do sform things, take the data and redirect to results
+    if sform.validate_on_submit():
+        return redirect(url_for("main.showresults") + f"?search_query={sform.keywords.data}")
     if request.method == "POST":
         event_name = request.form["Event Name"]
         event_place = request.form["Event Place"]
@@ -31,14 +33,14 @@ def eventform():
     holdpage = request.args.get("page", default = 0, type = int)
     return render_template("eventcreate.html", p = holdpage)
 
-@main.route("/results", methods=["POST"])
+@main.route("/results", methods=["GET", "POST"])
 def showresults():
-    page = request.args.get("page", default=0, type=int)
-    search_query = request.args.get("search_query", default="", type=str)
-    events = Event.query.order_by(Event.date_created).all()
-    if request.method == "POST":
-        return "haven't added functionality"
-        # searchfor = request.form["Keywords"]
-        # return [event for event in events if searchfor in event["name"]]
+    events = Event.query
+    keywords = request.args.get("search_query", type=str)
+    if keywords:
+        events = events.filter(Event.name.like("%" + keywords + "%"))
+        events = events.order_by(Event.date_created)
+        return render_template("results.html", evs=events)
     else:
-        return redirect("/")
+        return redirect(url_for("main.viewevents"))
+    

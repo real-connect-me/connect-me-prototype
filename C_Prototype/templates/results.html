@@ -1,5 +1,22 @@
 {% extends "base.html" %}
-{% block title %}Create Event{% endblock %}
-{% block content %}
 
+{% block title %}Results{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {% for i in evs %}
+        <div class="container rounded h-custom bg-light mt-3 text-light">
+            <div class="p-2">{{evs[page*3 + i]["name"]}}</div>
+            <div class="p-2">At {{evs[page*3 + i]["place"]}}</div>
+            <div class="p-2 mt-auto">{{evs[page*3 + i]["time"]}}</div>
+        </div>
+    {% endfor %}
+    {% if evs.count() == 0 %}
+        <div class="container mt-3 text-light">
+            <h1 class="text-light">No results</h1>
+        </div>
+    {% endif %}
 {% endblock %}

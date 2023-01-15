@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Create Event{% endblock %}
+{% block content %}
+    <div class="container mt-3">
+        <form class="inline-block" action="/?page={{p}}" method="post">
+            <div class="form-group">
+            <small id="what" class="form-text text-light">Please describe what event you plan to host.</small>
+            <input type="text" name="Event Name" class="form-control" id="what" aria-describedby="what" placeholder="Describe your event" required>
+            <small id="where" class="form-text text-light">Please tell us where you plan to host your event.</small>
+            <input type="text" name="Event Place" class="form-control" id="where" aria-describedby="where" placeholder="Where is your event" required>
+            <small id="when" class="form-text text-light">Please tell us when you plan to host your event. If you do not know yet, please provide a lettucemeet link.</small>
+            <input type="text" name="Event Time" class="form-control" id="when" aria-describedby="when" placeholder="When is your event" required>            
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

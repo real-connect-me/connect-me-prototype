@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Conn-ect{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3">
+                <form action="/" method="post">
+                    {{ sform.hidden_tag() }}
+                    <div class="input-group">
+                        <input type="text" name="keywords" class="form-control" placeholder="Enter Keywords">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <h3 class="d-flex justify-content-center mt-1 text-light">EVENTS</h3>
+            </div>
+            <div class="col-3 text-right">
+                <a class="btn btn-primary mt-2" href="{{url_for('main.eventform')}}?page={{page}}" role="button">New Event</a>
+            </div>
+        </div>
+    </div>
+    {% for i in range(3) %}
+        <div class="container rounded h-custom bg-light mt-3 text-light">
+            {% if page*3 + i < evs.__len__() %}
+                <div class="p-2">{{evs[page*3 + i]["name"]}}</div>
+                <div class="p-2">At {{evs[page*3 + i]["place"]}}</div>
+                <div class="p-2 mt-auto">{{evs[page*3 + i]["time"]}}</div>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col text-left mt-2">
+                {% if page > 0 %}
+                    <a class="btn btn-primary" href="{{url_for('main.viewevents')}}?page={{page-1}}" role="button">Prev Page</a>
+                {% else %}
+                    <a class="btn btn-secondary disabled" href="/" role="button">Prev Page</a>
+                {% endif %}
+            </div>
+            <div class="col-3">  
+                <div class="d-flex justify-content-center align-content-center text-light">Page: {{page+1}}</div>
+            </div>
+            <div class="col text-right mt-2">
+                <a class="btn btn-primary" href="{{url_for('main.viewevents')}}?page={{page+1}}" role="button">Next Page</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
